@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Notes</title>
+</head>
+<body>
+{% extends 'templates/Base.html' %}
+
+{% block content %}
+<h1>Meeting Notes</h1>
+
+    <form method="post">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="notes">Notes:</label>
+        <textarea id="notes" name="notes" rows="4" required></textarea>
+
+        <button type="submit">Add Meeting Note</button>
+    </form>
+
+    <h2>Your Meeting Notes</h2>
+    <ul>
+        {% for note in meeting_notes %}
+            <li>
+                <strong>Date:</strong> {{ note['Date'] }} |
+                <strong>Time:</strong> {{ note['Time'] }} |
+                <strong>Notes:</strong> {{ note['Notes'] }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+</body>
+</html>
